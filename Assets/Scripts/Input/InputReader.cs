@@ -18,10 +18,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls = new Controls();
         controls.Player.SetCallbacks(this);
         controls.Player.Enable();
+
+        AttackEvent += AttackMessage;
     }
 
     private void OnDestroy()
     {//If we dont tidy we will get memory leaks.
+        AttackEvent -= AttackMessage;
+
         controls.Player.Disable();
     }
 
@@ -42,4 +46,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         AttackEvent?.Invoke();
     }
 
+    public void AttackMessage()
+    {
+        Debug.Log("Attack Triggered!");
+    }
 }
