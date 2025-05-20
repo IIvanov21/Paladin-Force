@@ -12,6 +12,7 @@ public class StateMachine : MonoBehaviour
 
     public void SwitchState(State newState)
     {
+       
         currentState?.Exit();
 
         currentState = newState;
