@@ -14,11 +14,13 @@ public class PlayerFreeLookState:PlayerBaseState
 
     public override void Enter()
     {
-        //stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash,AnimatorDampTime); 
+        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash,AnimatorDampTime);
+        stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
     public override void Exit()
     {
+        stateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
     public override void Tick(float deltaTime)
@@ -59,9 +61,20 @@ public class PlayerFreeLookState:PlayerBaseState
         }
 
         stateMachine.Animator.SetFloat(FreeLookSpeedHash,1,AnimatorDampTime,deltaTime);//Sets it to running
+        /*stateMachine.Animator.SetFloat("FreeLookSpeed", stateMachine.InputReader.MovementValue.y);
+        stateMachine.Animator.SetInteger("FreeLookSpeed", 1);
+        stateMachine.Animator.SetBool("FreeLookSpeed", false);
+        stateMachine.Animator.SetTrigger(FreeLookSpeedHash);*/
+
 
         stateMachine.transform.rotation=Quaternion.Lerp(stateMachine.transform.rotation,
             Quaternion.LookRotation(stateMachine.MovementVector),deltaTime*stateMachine.RotationDamping);
     }
 
+    private void OnTarget()
+    {
+        if (!stateMachine.Targeter.SelectTarget()) return;
+
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+    }
 }
