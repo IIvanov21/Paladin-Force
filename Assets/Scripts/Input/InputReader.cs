@@ -9,9 +9,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue {  get; private set; }
     public Vector2 LookValue { get; private set; }
 
-    public event Action AttackEvent;
+    //public event Action AttackEvent;
     public event Action TargetEvent;
     public event Action CancelTargetEvent;
+
+    public bool IsAttacking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,8 +43,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!context.performed) { return; }
-        AttackEvent?.Invoke();
+        if(context.performed)
+        {
+            IsAttacking = true;
+        }
+        else if(context.canceled)
+        {
+            IsAttacking = false;
+        }
     }
 
     public void OnTarget(InputAction.CallbackContext context)

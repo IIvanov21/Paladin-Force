@@ -26,6 +26,11 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Targeter Targeter { get; private set; }
     [field: SerializeField]public float TargetingMovementSpeed { get; private set; }
 
+    //Atacking References
+    [field: SerializeField]public ForceReceiver ForceReceiver { get; private set; }
+    [field: SerializeField]public WeaponDamage WeaponDamage { get; private set; }
+    [field: SerializeField]public Attack[] Attacks { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

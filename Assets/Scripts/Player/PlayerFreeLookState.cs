@@ -25,9 +25,14 @@ public class PlayerFreeLookState:PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if(stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine,0));
+            return;
+        }
         stateMachine.MovementVector = CalculateMovement();
 
-        stateMachine.characterController.Move(stateMachine.MovementVector * stateMachine.PlayerSpeed*deltaTime);
+        Move(stateMachine.MovementVector * stateMachine.PlayerSpeed,deltaTime);
 
         FaceMovementDirection(deltaTime);
     }

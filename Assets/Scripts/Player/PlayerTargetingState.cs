@@ -23,14 +23,19 @@ public class PlayerTargetingState:PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if(stateMachine.Targeter.CurrentTarget == null)
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
+        if (stateMachine.Targeter.CurrentTarget == null)
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
 
         stateMachine.MovementVector = CalculateMovement();
-        stateMachine.characterController.Move(stateMachine.MovementVector * 
-            deltaTime * stateMachine.TargetingMovementSpeed);
+        Move(stateMachine.MovementVector * stateMachine.TargetingMovementSpeed,deltaTime);
 
         FaceTarget();
 
@@ -70,7 +75,7 @@ public class PlayerTargetingState:PlayerBaseState
 
     }
 
-    private void FaceTarget()
+    /*private void FaceTarget()
     {
         if (stateMachine.Targeter.CurrentTarget == null) return;
 
@@ -80,5 +85,5 @@ public class PlayerTargetingState:PlayerBaseState
         facingVector.y = 0.0f;
 
         stateMachine.transform.rotation = Quaternion.LookRotation(facingVector);
-    }
+    }*/
 }
