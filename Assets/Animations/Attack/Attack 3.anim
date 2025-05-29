@@ -4725,10 +4725,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 2.5000002
         value: {x: 0.27543238, y: -0.00017546341, z: -0.011856192, w: 0.9612473}
-        inSlope: {x: -0.00000089406416, y: -0.0000037805642, z: -0.00000083818514,
-          w: 0}
-        outSlope: {x: -0.00000089406416, y: -0.0000037805642, z: -0.00000083818514,
-          w: 0}
+        inSlope: {x: -0.00000089406416, y: -0.0000037805642, z: -0.00000083818514, w: 0}
+        outSlope: {x: -0.00000089406416, y: -0.0000037805642, z: -0.00000083818514, w: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
@@ -10800,8 +10798,7 @@ AnimationClip:
         time: 0.16666667
         value: {x: 0.35539874, y: -0.051339865, z: -0.009044987, w: 0.93325996}
         inSlope: {x: 0.00000044703486, y: -0.000005979089, z: -0.00000025146073, w: 0}
-        outSlope: {x: 0.00000044703486, y: -0.000005979089, z: -0.00000025146073,
-          w: 0}
+        outSlope: {x: 0.00000044703486, y: -0.000005979089, z: -0.00000025146073, w: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}
@@ -99026,7 +99023,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.3333334
-    functionName: EnableWeapon
+    functionName: DisableWeapong
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
