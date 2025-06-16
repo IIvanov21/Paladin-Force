@@ -38,7 +38,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnLook(InputAction.CallbackContext context)
     {
         LookValue=context.ReadValue<Vector2>();
-        Debug.Log(LookValue);
+        //Debug.Log(LookValue);
     }
 
     public void OnAttack(InputAction.CallbackContext context)

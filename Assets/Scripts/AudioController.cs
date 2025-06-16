@@ -4,7 +4,9 @@ public class AudioController : MonoBehaviour
 {
     private AudioSource audioSource;
     public InputReader inputReader;
-
+    public AudioClip dingSoundOne;
+    public AudioClip dingSoundTwo;
+    public AudioClip dingSoundThree;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
