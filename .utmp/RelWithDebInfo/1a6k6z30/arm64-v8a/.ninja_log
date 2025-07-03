@@ -1,0 +1,10 @@
+# ninja log v5
+112	3003	7731605337355488	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	58cb5b639177f4b1
+198	3078	7731605338317526	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	48f6b1cf4bded785
+17	3092	7731605338357686	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	d5770d9ac08657eb
+70	3108	7731605338663852	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	3c8de8ef69504767
+1	3175	7731605339313708	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	67b6d966bff144ca
+139	3422	7731605341899586	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	41355fcd16d8092a
+50	3499	7731605342657285	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	da7b7fe6df0734b
+32	3727	7731605344947824	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2b19ec332b7f7d6b
+3728	3876	7731605346512845	E:/Projects/Paladin Force/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1a6k6z30/obj/arm64-v8a/libgame.so	ede09d3c741e09d6
