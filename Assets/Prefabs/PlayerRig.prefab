@@ -2332,7 +2332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6933759700860556417, guid: af43e1413afb59c40950eab3586b35e8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6933759700860556417, guid: af43e1413afb59c40950eab3586b35e8, type: 3}
       propertyPath: m_SkinWidth
@@ -2689,6 +2689,9 @@ PrefabInstance:
       addedObject: {fileID: 125219049990265143}
     - targetCorrespondingSourceObject: {fileID: 8520166775491637775, guid: af43e1413afb59c40950eab3586b35e8, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7043896954733878612}
+    - targetCorrespondingSourceObject: {fileID: 8520166775491637775, guid: af43e1413afb59c40950eab3586b35e8, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7966554974523019335}
     - targetCorrespondingSourceObject: {fileID: 8520166775491637775, guid: af43e1413afb59c40950eab3586b35e8, type: 3}
       insertIndex: -1
@@ -2753,6 +2756,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 8744993702857316487}
+--- !u!114 &7043896954733878612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572331494213156916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf43d198c65e8f4b878e2ea1a3020bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
 --- !u!114 &7966554974523019335
 MonoBehaviour:
   m_ObjectHideFlags: 0
