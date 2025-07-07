@@ -33,6 +33,14 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField]public Attack[] Attacks { get; private set; }
 
+    [field: SerializeField] public float DodgeDurtaion { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }
+    [field: SerializeField] public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
+    [field: SerializeField] public float DodgeCoolDown { get; private set; }
+    [field: SerializeField] public float JumpForce { get; private set; }
+    [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,5 +50,8 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerFreeLookState(this));
     }
 
-    
+    public void SetDodgeTime(float time)
+    {
+        PreviousDodgeTime = time;
+    }
 }

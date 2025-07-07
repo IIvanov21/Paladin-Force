@@ -9,15 +9,20 @@ public class PlayerTargetingState:PlayerBaseState
     private readonly int TargetingRight = Animator.StringToHash("TargetingRight");
     private const float AnimatorDampTime = 0.1f;
 
+
+
     public override void Enter()
     {
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTree,AnimatorDampTime);
 
         stateMachine.InputReader.CancelTargetEvent += OnCancel;
+        stateMachine.InputReader.DodgeEvent += OnDodge;
+
     }
 
     public override void Exit()
     {
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
         stateMachine.InputReader.CancelTargetEvent -= OnCancel;
     }
 
@@ -92,4 +97,10 @@ public class PlayerTargetingState:PlayerBaseState
 
         stateMachine.transform.rotation = Quaternion.LookRotation(facingVector);
     }*/
+
+    private void OnDodge()
+    {
+        // Switch to dodging state
+        stateMachine.SwitchState(new PlayerDodgingState(stateMachine, stateMachine.InputReader.MovementValue));
+    }
 }

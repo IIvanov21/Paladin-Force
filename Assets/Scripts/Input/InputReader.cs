@@ -13,6 +13,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     //public event Action AttackEvent;
     public event Action TargetEvent;
     public event Action CancelTargetEvent;
+    public event Action DodgeEvent;
+    public event Action JumpEvent;
+
+
 
     public bool IsAttacking = false;
     public bool IsBlocking { get; private set; }
@@ -85,5 +89,19 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             IsBlocking = false;
         }
+    }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        DodgeEvent?.Invoke();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        JumpEvent?.Invoke();
     }
 }
