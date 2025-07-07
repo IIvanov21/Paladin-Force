@@ -25,7 +25,7 @@ public class PlayerJumpingState : PlayerBaseState
 
     private void HandleLedgeDetect(Vector3 ledgeForward, Vector3 closestPoints)
     {
-        //stateMachine.SwitchState(new PlayerHangingState(stateMachine, ledgeForward,closestPoints));
+        stateMachine.SwitchState(new PlayerHangingState(stateMachine, ledgeForward,closestPoints));
     }
 
     public override void Tick(float deltaTime)

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerFreeLookState:PlayerBaseState
 {
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+    bool shouldFade;
+
+  
 
     /*
      * Animation Variables
@@ -10,13 +12,20 @@ public class PlayerFreeLookState:PlayerBaseState
     private const float AnimatorDampTime = 0.1f;
     private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeStateBlendTree");
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    
-
+    public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
+    {
+        this.shouldFade = shouldFade;
+    }
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash,AnimatorDampTime);
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
+        if (shouldFade) stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, AnimatorDampTime);
+        else
+        {
+            stateMachine.Animator.Play(FreeLookBlendTreeHash);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0.0f);
+        }
 
     }
 
