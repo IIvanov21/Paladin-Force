@@ -15,7 +15,7 @@ public class Ragdoll : MonoBehaviour
         colliders = GetComponentsInChildren<Collider>(true);
         allRigidBodies = GetComponentsInChildren<Rigidbody>(true);
 
-
+        ToggleRagdoll(false);
     }
 
     public void ToggleRagdoll(bool isRagdoll)
