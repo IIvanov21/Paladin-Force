@@ -14,11 +14,14 @@ public class PlayerTargetingState:PlayerBaseState
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTree,AnimatorDampTime);
 
         stateMachine.InputReader.CancelTargetEvent += OnCancel;
+        stateMachine.InputReader.DodgeEvent += OnDodge;
     }
 
     public override void Exit()
     {
         stateMachine.InputReader.CancelTargetEvent -= OnCancel;
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
+
     }
 
     public override void Tick(float deltaTime)
@@ -26,6 +29,12 @@ public class PlayerTargetingState:PlayerBaseState
         if (stateMachine.InputReader.IsAttacking)
         {
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
+        if(stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
             return;
         }
 
@@ -86,4 +95,9 @@ public class PlayerTargetingState:PlayerBaseState
 
         stateMachine.transform.rotation = Quaternion.LookRotation(facingVector);
     }*/
+
+    private void OnDodge()
+    {
+        stateMachine.SwitchState(new PlayerDodgingState(stateMachine,stateMachine.InputReader.MovementValue));
+    }
 }

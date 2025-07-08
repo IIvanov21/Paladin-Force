@@ -12,9 +12,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     //public event Action AttackEvent;
     public event Action TargetEvent;
     public event Action CancelTargetEvent;
+    public event Action DodgeEvent;
+    public event Action JumpEvent;
 
     public bool IsAttacking = false;
-
+    public bool IsBlocking=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,5 +70,29 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if(!context.performed) return;
 
         CancelTargetEvent?.Invoke();
+    }
+
+    public void OnBlock(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            IsBlocking = true;
+        }
+        else if (context.canceled)
+        {
+            IsBlocking = false;
+        }
+    }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        DodgeEvent?.Invoke();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        JumpEvent?.Invoke();
     }
 }

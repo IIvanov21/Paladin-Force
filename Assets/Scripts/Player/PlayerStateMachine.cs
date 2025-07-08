@@ -29,6 +29,13 @@ public class PlayerStateMachine : StateMachine
     //Atacking References
     [field: SerializeField]public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField]public WeaponDamage WeaponDamage { get; private set; }
+    [field: SerializeField]public Health Health { get; private set; }
+    [field: SerializeField]public float DodgeDuration {  get; private set; }
+    [field: SerializeField]public float PreviousDodgeTime {  get; private set; }
+    [field: SerializeField]public float DodgeLength {  get; private set; }
+    [field: SerializeField]public float DodgeCoolDown {  get; private set; }
+    [field: SerializeField]public float JumpForce {  get; private set; }
+    [field: SerializeField]public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField]public Attack[] Attacks { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,5 +47,9 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerFreeLookState(this));
     }
 
+    public void SetDodgeTime(float time)
+    {
+        PreviousDodgeTime = time;
+    }
     
 }
